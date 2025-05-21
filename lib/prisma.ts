@@ -22,5 +22,7 @@ function keepAlive() {
   }, 4 * 60 * 1000)
 }
 
-// Start keepAlive only once (in production or dev)
-keepAlive()
+// Run keepAlive only in server environment (not during build)
+if (typeof window === 'undefined') {
+  keepAlive()
+}
