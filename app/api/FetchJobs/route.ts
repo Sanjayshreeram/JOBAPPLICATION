@@ -2,20 +2,26 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url)
+  const { searchParams } = new URL(req.url || 'http://localhost') // fallback for build time
 
-  const jobTitle = searchParams.get('jobTitle')
-  const location = searchParams.get('location')
-  const jobType = searchParams.get('jobType')
+  const jobTitle = searchParams.get('jobTitle') || ''
+  const location = searchParams.get('location') || ''
+  const jobType = searchParams.get('jobType') || ''
 
   const filters: any = {}
 
   if (jobTitle) {
-    filters.jobTitle = { contains: jobTitle, mode: 'insensitive' }
+    filters.jobTitle = {
+      contains: jobTitle,
+      mode: 'insensitive',
+    }
   }
 
   if (location) {
-    filters.location = { contains: location, mode: 'insensitive' }
+    filters.location = {
+      contains: location,
+      mode: 'insensitive',
+    }
   }
 
   if (jobType) {
@@ -25,12 +31,17 @@ export async function GET(req: Request) {
   try {
     const jobs = await prisma.jobPosting.findMany({
       where: filters,
-      orderBy: { createdAt: 'desc' },
+      orderBy: {
+        createdAt: 'desc',
+      },
     })
 
     return NextResponse.json(jobs)
   } catch (error) {
     console.error('Error fetching jobs:', error)
-    return NextResponse.json({ error: 'Failed to fetch jobs' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Failed to fetch jobs' },
+      { status: 500 }
+    )
   }
 }
