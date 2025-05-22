@@ -22,6 +22,27 @@
   }
 }
 
+.react-hot-toast {
+  background-color: #000000 !important;  /* black background */
+  color: #ffffff !important;             /* white text */
+  font-weight: bold;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+/* If you want the icons to be white on black background */
+.react-hot-toast > div svg {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Optional: Remove default shadow */
+.react-hot-toast {
+  box-shadow: none !important;
+}
+
+
 
 
 @layer base {

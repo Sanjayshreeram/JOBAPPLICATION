@@ -61,7 +61,7 @@ const JobCard = ({ job }: { job: JobProps }) => {
 
      <ul className="mb-4 list-disc pl-5 text-sm text-gray-700 font-sans font-medium">
   {job.jobDescription
-    .split('\n')            // split description by new lines
+    .split('\n')          
     .map((line, index) => (
       <li key={index}>{line}</li>   
     ))}

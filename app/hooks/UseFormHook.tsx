@@ -133,7 +133,7 @@ export function UseFormHook() {
 
   const handleInputChange = (field: keyof JobFormData, value: any) => {
     if (field === 'companyName') {
-      // Find the company logo if it exists in our predefined list
+      
       const company = companyOptions.find(c => c.value === value);
       setFormData((prev) => ({
         ...prev,

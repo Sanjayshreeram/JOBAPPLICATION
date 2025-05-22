@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
 export async function GET(req: Request) {
-  console.log('DATABASE_URL:', process.env.DATABASE_URL)
-  const { searchParams } = new URL(req.url || 'http://localhost') // fallback for build time
+ 
+  const { searchParams } = new URL(req.url || 'http://localhost') 
 
   const jobTitle = searchParams.get('jobTitle') || ''
   const location = searchParams.get('location') || ''

@@ -10,7 +10,9 @@ import {
   CalendarDays,
   Globe,
   Pin,
-  Search
+  Search,
+  ArrowDownUp,
+  ArrowUpDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,6 +49,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UseFormHook } from "../hooks/UseFormHook";
 import { useJobCardToggle } from "../context/JobCardContextType";
+import toast from "react-hot-toast";
 
 export function JobForm() {
     const {closeCard}=useJobCardToggle();
@@ -54,12 +57,12 @@ export function JobForm() {
   const [openCompanySelect, setOpenCompanySelect] = React.useState(false);
 
   const onPublish = () => {
-    if (!formData.jobTitle || !formData.companyName || !formData.jobType || !formData.location) {
-     alert("Please fill in all required fields.");
+    if (!formData.jobTitle || !formData.companyName || !formData.jobType || !formData.location || formData.salaryMin==="" || formData.salaryMax==="" || !formData.applicationDeadline || !formData.jobDescription) {
+     toast.error("Please fill in all required fields.");
       return;
     }
     handleSubmit();
-    alert("Job posted successfully!");
+    toast.success("Job posted successfully!");
     closeCard();
 
     
@@ -213,7 +216,7 @@ export function JobForm() {
           <div className="flex items-center space-x-2">
             <div className="relative flex-1">
               <span className="absolute left-2.5 top-2.5 text-gray-500">
-                <DollarSign className="w-5 h-5" />
+                <ArrowUpDown className="w-5 h-5" />
               </span>
               <Input
                 placeholder="Min"
@@ -225,7 +228,7 @@ export function JobForm() {
             <span>to</span>
             <div className="relative flex-1">
               <span className="absolute left-2.5 top-2.5 text-gray-500">
-                <DollarSign className="w-5 h-5" />
+                <ArrowUpDown className="w-5 h-5" />
               </span>
               <Input
                 placeholder="Max"
