@@ -34,7 +34,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchJobs()
-  }, [jobs])
+  }, [])
 
   return (
     <main className="relative flex min-h-screen w-full flex-col bg-slate-50 text-black">
