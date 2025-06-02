@@ -1,23 +1,59 @@
+"use client"
+import { useState } from "react"
 import { useJobCardToggle } from "@/app/hooks/useJobCardToggle"
+import { Menu, X } from "lucide-react" // Install lucide-react if not already
 
 const Navbar = () => {
-  const { toggleCard } = useJobCardToggle();
+  const { toggleCard } = useJobCardToggle()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <div
-      className="mt-3 flex h-16 w-[1200px] items-center justify-between rounded-full bg-slate-50 px-4 shadow-2xl shadow-slate-300"
-      style={{ flexWrap: "nowrap", overflowX: "auto" }}
-    >
-      <img src="cmwlogo (1) 1.svg" alt="logo" />
-      <h1>Home</h1>
-      <h1>Find Jobs</h1>
-      <h1>Find Talents</h1>
-      <h1>About us</h1>
-      <h1>Testimonials</h1>
-      <button className="rounded-full bg-purple-700 px-4 py-1 text-white" onClick={toggleCard}>
-        Create Jobs
-      </button>
-    </div>
+    <nav className="bg-slate-50 shadow-2xl shadow-slate-300 px-4 py-2 rounded-full max-w-[1200px] mx-auto mt-3">
+      <div className="flex items-center justify-between">
+        <img src="cmwlogo (1) 1.svg" alt="logo" className="h-8 w-auto" />
+
+        {/* Desktop menu */}
+        <div className="hidden md:flex gap-6 items-center">
+          <h1 className="cursor-pointer">Home</h1>
+          <h1 className="cursor-pointer">Find Jobs</h1>
+          <h1 className="cursor-pointer">Find Talents</h1>
+          <h1 className="cursor-pointer">About us</h1>
+          <h1 className="cursor-pointer">Testimonials</h1>
+        </div>
+
+   
+        <div className="md:hidden">
+          <button onClick={toggleMenu}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        <button
+          className="hidden md:block rounded-full bg-purple-700 px-4 py-1 text-white"
+          onClick={toggleCard}
+        >
+          Create Jobs
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="mt-2 flex flex-col gap-2 md:hidden">
+          <h1 className="cursor-pointer">Home</h1>
+          <h1 className="cursor-pointer">Find Jobs</h1>
+          <h1 className="cursor-pointer">Find Talents</h1>
+          <h1 className="cursor-pointer">About us</h1>
+          <h1 className="cursor-pointer">Testimonials</h1>
+          <button
+            className="mt-2 rounded-full bg-purple-700 px-4 py-1 text-white"
+            onClick={toggleCard}
+          >
+            Create Jobs
+          </button>
+        </div>
+      )}
+    </nav>
   )
 }
 
