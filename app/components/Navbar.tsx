@@ -46,7 +46,7 @@ const Navbar = () => {
           <h1 className="cursor-pointer">About us</h1>
           <h1 className="cursor-pointer">Testimonials</h1>
           <button
-            className="mt-2 rounded-full bg-purple-700 px-4 py-1 text-white"
+            className="mt-2  bg-purple-700 px-4 py-1 text-white"
             onClick={toggleCard}
           >
             Create Jobs

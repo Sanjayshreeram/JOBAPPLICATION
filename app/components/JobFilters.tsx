@@ -70,7 +70,7 @@ const JobFilters = ({ onApplyFilters }: Props) => {
 
       <div className='flex flex-col gap-2 items-center'>
         <span className='text-black font-semibold'>
-          Salary Range (not applied)
+          Salary Per Month
         </span>
         <Slider min={20000} max={300000} step={5000} value={salaryRange} onValueChange={(value) => setSalaryRange(value)} className="h-2 w-64" />
       </div>
