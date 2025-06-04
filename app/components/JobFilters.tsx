@@ -29,7 +29,7 @@ const JobFilters = ({ onApplyFilters }: Props) => {
   }
 
   return (
-    <div className="mt-4 flex w-full flex-wrap justify-around gap-4 bg-white px-4 py-3 shadow-2xl text-gray-400">
+    <div className="mt-4 flex w-full flex-wrap justify-around gap-4 bg-white px-4 py-3 shadow-2xl text-gray-400 font-satoshi">
       <div className='flex flex-row gap-2 items-center'>
         <Search />
         <Input

@@ -10,7 +10,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <nav className="bg-slate-50 shadow-2xl shadow-slate-300 px-4 py-2 rounded-full max-w-[1200px] mx-auto mt-3">
+    <nav className="bg-slate-50 shadow-sm font-normal shadow-slate-300 px-4 py-4 rounded-full max-w-[1000px] mx-auto mt-3 font-satoshi">
       <div className="flex items-center justify-between">
         <img src="cmwlogo (1) 1.svg" alt="logo" className="h-8 w-auto" />
 
@@ -31,7 +31,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className="hidden md:block rounded-full bg-purple-700 px-4 py-1 text-white"
+          className="hidden md:block rounded-full bg-gradient-purple px-4 py-1 text-white"
           onClick={toggleCard}
         >
           Create Jobs

@@ -21,7 +21,7 @@ function getDaysAgo(createdAt: string | Date) {
 
 const JobCard = ({ job }: { job: JobProps }) => {
   return (
-    <div className="flex flex-col rounded-lg bg-white p-4 shadow-md">
+    <div className="flex flex-col rounded-lg bg-white p-4 shadow-md font-satoshi">
       <div className="mb-4 flex items-center">
         <div className="flex h-14 items-center justify-between w-full">
   <div className="flex h-14 w-14 items-center justify-center rounded-md shadow-xl">
@@ -33,7 +33,7 @@ const JobCard = ({ job }: { job: JobProps }) => {
       />
     </span>
   </div>
-  <p className="text-xs text-black w-auto h-6 p-2  bg-sky-300 font-semibold rounded-md flex items-center" >
+  <p className="text-xs text-black w-auto h-8 p-3  bg-customBlue  rounded-md flex items-center" >
    <span>
      {getDaysAgo(job.createdAt)}
      </span>
@@ -59,7 +59,7 @@ const JobCard = ({ job }: { job: JobProps }) => {
         </span>
       </div>
 
-     <ul className="mb-4 list-disc pl-5 text-sm text-gray-700 font-sans font-medium">
+     <ul className="mb-4 list-disc pl-5  text-gray-700 font-sans ">
   {job.jobDescription
     .split('\n')          
     .map((line, index) => (

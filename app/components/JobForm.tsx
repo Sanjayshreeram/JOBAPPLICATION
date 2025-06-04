@@ -12,7 +12,12 @@ import {
   Pin,
   Search,
   ArrowDownUp,
-  ArrowUpDown
+  ArrowUpDown,
+  CircleX,
+  ChevronDown,
+  ChevronsDown,
+  ChevronRight,
+  ChevronsRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -76,7 +81,12 @@ export function JobForm() {
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold text-center mb-6">Create Job Opening</h1>
+      <div  className="flex justify-between">
+         <h1 className="text-2xl font-bold text-center mb-6">Create Job Opening</h1>
+         <CircleX onClick={()=>closeCard()}/>
+
+      </div>
+     
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div className="space-y-2">
@@ -105,16 +115,17 @@ export function JobForm() {
             <Popover open={openCompanySelect} onOpenChange={setOpenCompanySelect}>
               <PopoverTrigger asChild>
                 <Button
-                  variant="outline"
-                  role="combobox"
-                  aria-expanded={openCompanySelect}
-                  className="w-full justify-between pl-9 text-left"
-                >
-                  <span className="absolute left-2.5 top-2.5 text-gray-500">
-                    {formData.companyLogo || <Building className="w-5 h-5" />}
-                  </span>
-                  {formData.companyName || "Select Company"}
-                </Button>
+  variant="outline"
+  role="combobox"
+  aria-expanded={openCompanySelect}
+  className="w-full justify-between pl-9 text-left"
+>
+  <span className="absolute left-2.5 top-2.5 text-gray-500">
+    <Building className="w-5 h-5" />
+  </span>
+  {formData.companyName || "Select Company"}
+</Button>
+
               </PopoverTrigger>
               <PopoverContent className="w-[300px] p-0 z-50">
                 <Command>
@@ -292,16 +303,26 @@ export function JobForm() {
       <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6">
         <Button
           variant="outline"
-          className="px-6"
+          className="px-6 flex flex-row"
           onClick={onSaveDraft}
         >
-          Save Draft
+        
+          <p>
+       Save Draft
+          </p>
+         <ChevronsDown/>
+
+
         </Button>
         <Button
           className="px-6 bg-blue-500 hover:bg-blue-600 text-white"
           onClick={onPublish}
         >
-          Publish
+          <p>
+             Publish
+          </p>
+          <ChevronsRight/>
+         
         </Button>
       </div>
     </div>
